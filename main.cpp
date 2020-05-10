@@ -14,17 +14,8 @@ using namespace cv;
 
 int main(int argc, char **argv)
 {
-	enum Foo {
-		One = 1,
-		Two = 2,
-		Three = 3,
-		Four = 4,
-		Five = 5,
-		Six = 6,
-		Last
-	};
 	std::ofstream myfile;
-	myfile.open("lbp_eval18.csv");
+	myfile.open("lbp_eval.csv");
 	myfile << "File,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26\n";
 	string filename;
 	int n = 36;
@@ -62,12 +53,12 @@ int main(int argc, char **argv)
 				cv::Mat lbp_hist_18;
 				cv::Mat lbp_hist_216;
 				cv::Mat lbp_hist_324;
-				compute_LBP_1_8_hist(image, lbp_hist_18);
-				cout << "lbp18: " << lbp_hist_18 << endl;
+				//compute_LBP_1_8_hist(image, lbp_hist_18);
+				//cout << "lbp18: " << lbp_hist_18 << endl;
 				//compute_LBP_2_16_hist(image, lbp_hist_216);
 				//cout << "lbp216: " << lbp_hist_216 << endl;
-				//compute_LBP_3_24_hist(image, lbp_hist_324);
-				//cout << "lbp324: " << lbp_hist_324 << endl;
+				compute_LBP_3_24_hist(image, lbp_hist_324);
+				cout << "lbp324: " << lbp_hist_324 << endl;
 				////////////////////////////////////////////
 
 				Mat lbp_image;
