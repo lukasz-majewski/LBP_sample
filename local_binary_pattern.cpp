@@ -173,6 +173,18 @@ void local_binary_pattern(const cv::Mat &image, int P, int R, int method, cv::Ma
 
     int changes;
 
+	double a[24];
+	double b[24];
+	lbp = 0;
+	for (int i = 0; i < P; i++)
+	{
+		rp = -R * sin(2 * CV_PI * i / P);
+
+		a[i] = rp;
+		cp = R * cos(2 * CV_PI * i / P);
+
+		b[i] = cp;
+	}
     for(int r = R; r < rows - 2 * R; r++)
     {
         for(int c = R; c < cols - 2 * R; c++)
@@ -180,11 +192,9 @@ void local_binary_pattern(const cv::Mat &image, int P, int R, int method, cv::Ma
             lbp = 0;
             for(int i = 0; i < P; i++)
             {
-                rp = - R * sin(2 * CV_PI * i / P);
-                cp = R * cos(2 * CV_PI * i / P);
-//                rp =  floor(rr * 100000.000f) / 100000.000f;
-//                cp = floor(cc * 100000.000f) / 100000.000f;
 
+				rp = a[i];
+				cp = b[i];
                 texture[i] = (uchar)(cvRound(bilinear_interpolation(image, r + rp, c + cp)));
                 // signed / thresholded texture
                 if((int)texture[i] - (int)image.at<uchar>(r, c) >= 0)
