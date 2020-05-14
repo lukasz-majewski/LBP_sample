@@ -6,9 +6,9 @@ CONFIG -= qt
 
 # opencv_win begin
 OPENCV_VER = 340
-COMPILER = vs2015
-PLATFORM = x86
-OPENCV_DIR = E:/0-myWorkSpace/0-3rdparty/opencv$$OPENCV_VER
+COMPILER = vs2017
+PLATFORM = x64
+OPENCV_DIR = /opencv$$OPENCV_VER
 OPENCV_LIB_DIR = $$OPENCV_DIR/$$COMPILER/$$PLATFORM/lib
 
 message($$OPENCV_DIR)
@@ -22,7 +22,7 @@ CONFIG(debug, debug|release){
 
     DESTDIR = $$PWD/bin-debug
 
-    if(equals(COMPILER, "vs2015")){
+    if(equals(COMPILER, "vs2017")){
 
         message("compiler is" $$COMPILER)
     }
@@ -33,7 +33,7 @@ CONFIG(debug, debug|release){
 
     DESTDIR = $$PWD/bin
 
-    if(equals(COMPILER, "vs2015")){
+    if(equals(COMPILER, "vs2017")){
         message("compiler is" $$COMPILER)
 
         LIBS += $$OPENCV_LIB_DIR/opencv_calib3d"$$OPENCV_VER".lib
